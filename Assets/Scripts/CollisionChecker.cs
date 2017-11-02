@@ -24,6 +24,11 @@ public class CollisionChecker : MonoBehaviour
         i++;
 	}
 
+    public void SortandSweep()
+    {
+
+    }
+
     public bool TestOverlap(AABB a, AABB b)
     {
         bool xCollide = false;
@@ -46,4 +51,5 @@ public class CollisionChecker : MonoBehaviour
             return false;
         }
     }
+
 }
