@@ -7,17 +7,21 @@ public class CollisionChecker : MonoBehaviour
     public List<AABB> AxisList;
 
     private List<AABB> ActiveList;
+    private bool isColliding;
 
 	// Use this for initialization
 	void Start ()
     {
         AxisList.Sort();
+        ActiveList.Add(AxisList[0]);
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        
+        int i = 1;
+        isColliding = TestOverlap(ActiveList[0], AxisList[i]);
+        i++;
 	}
 
     public bool TestOverlap(AABB a, AABB b)
