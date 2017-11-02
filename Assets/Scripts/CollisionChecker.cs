@@ -4,29 +4,31 @@ using UnityEngine;
 
 public class CollisionChecker : MonoBehaviour
 {
-    public AABB AABBconfig;
-    public AABB test;
+    public List<AABB> AxisList;
 
+    private List<AABB> ActiveList;
 
 	// Use this for initialization
-	void Start () {
-		
+	void Start ()
+    {
+        AxisList.Sort();
 	}
 	
 	// Update is called once per frame
-	void Update () {
-        TestOverlap(test);
+	void Update ()
+    {
+        
 	}
 
-    public bool TestOverlap(AABB other)
+    public bool TestOverlap(AABB a, AABB b)
     {
         bool xCollide = false;
         bool yCollide = false;
-        if (AABBconfig.m_min.x <= other.m_max.x && AABBconfig.m_min.x >= other.m_min.x)
+        if (a.m_min.x <= b.m_max.x && a.m_min.x >= b.m_min.x)
         {
             xCollide = true;
         }
-        if (AABBconfig.m_min.y <= other.m_max.y && AABBconfig.m_min.y >= other.m_min.y)
+        if (a.m_min.y <= b.m_max.y && a.m_min.y >= b.m_min.y)
         {
             yCollide = true;
         }
