@@ -6,27 +6,43 @@ public class CollisionChecker : MonoBehaviour
 {
     public List<AABB> AxisList;
 
+    private int active;
     private List<AABB> ActiveList;
     private bool isColliding;
 
 	// Use this for initialization
 	void Start ()
     {
+        active = 0;
         AxisList.Sort();
-        ActiveList.Add(AxisList[0]);
+        ActiveList.Add(AxisList[active]);
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        int i = 1;
-        isColliding = TestOverlap(ActiveList[0], AxisList[i]);
-        i++;
+        SortandSweep();
 	}
 
     public void SortandSweep()
     {
-
+        AABB check;
+        for(int i = active + 1; i < AxisList.Capacity; i++)
+        {
+            check = AxisList[i];
+            if(check.m_min.x >= ActiveList[active].m_min.x && check.m_min.x <= ActiveList[active].m_max.x)
+            {
+                ActiveList.Add(check);
+                Debug.Log("Collision Occured");
+                active += 1;
+            }
+            else
+            {
+                ActiveList.Remove(ActiveList[active]);
+                active += 1;
+                break;
+            }
+        }
     }
 
     public bool TestOverlap(AABB a, AABB b)

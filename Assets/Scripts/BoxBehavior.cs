@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BoxBehavior : MonoBehaviour
 {
-    
+    public AABB collider;
 
 	// Use this for initialization
 	void Start ()
@@ -17,4 +17,9 @@ public class BoxBehavior : MonoBehaviour
     {
 		
 	}
+
+    public void CreateBoxes()
+    {
+        Instantiate()
+    }
 }
