@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97dcc8c6a5f248f429265ddfd7533d07, type: 3}
   m_Name: collider
   m_EditorClassIdentifier: 
-  m_min: {x: 0, y: 0}
-  m_max: {x: 0, y: 0}
+  m_min: {x: 1, y: 1}
+  m_max: {x: 5, y: 5}
