@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class BoxBehavior : MonoBehaviour
 {
-    public AABB collider;
+    public int BlockNum;
+    public GameObject Block;
+
+    private List<GameObject> BlockList;
 
 	// Use this for initialization
 	void Start ()
     {
-		
+        CreateBoxes(BlockNum);
 	}
 	
 	// Update is called once per frame
@@ -18,8 +21,16 @@ public class BoxBehavior : MonoBehaviour
 		
 	}
 
-    public void CreateBoxes()
+    public void CreateBoxes(int num)
     {
-        Instantiate()
+        for (int i = 0; i < num; i++)
+        {
+            Instantiate(Block);
+        }
+    }
+    
+    public void AttachAABB()
+    {
+
     }
 }

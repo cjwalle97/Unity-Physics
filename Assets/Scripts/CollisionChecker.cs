@@ -14,6 +14,7 @@ public class CollisionChecker : MonoBehaviour
 	void Start ()
     {
         active = 0;
+        SetList();
         AxisList.Sort();
         ActiveList.Add(AxisList[active]);
 	}
@@ -23,6 +24,11 @@ public class CollisionChecker : MonoBehaviour
     {
         SortandSweep();
 	}
+
+    public void SetList()
+    {
+
+    }
 
     public void SortandSweep()
     {
