@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CollisionChecker : MonoBehaviour
 {
+    public AABB AABBConfig;
     public List<AABB> AxisList;
 
     private int active;
@@ -14,7 +15,6 @@ public class CollisionChecker : MonoBehaviour
 	void Start ()
     {
         active = 0;
-        SetList();
         AxisList.Sort();
         ActiveList.Add(AxisList[active]);
 	}

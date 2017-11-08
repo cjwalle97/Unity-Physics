@@ -22,9 +22,10 @@ GameObject:
   - component: {fileID: 33482502732143362}
   - component: {fileID: 65827928482534206}
   - component: {fileID: 23095274640948848}
+  - component: {fileID: 114729396139788748}
   m_Layer: 0
   m_Name: Block
-  m_TagString: Untagged
+  m_TagString: AABB
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,3 +96,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114729396139788748
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1509208880428584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aa3e986a9feed74689635ba10591fd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AABBConfig: {fileID: 11400000, guid: 165f5e0314041174fba855eab5b929cc, type: 2}
+  AxisList: []
