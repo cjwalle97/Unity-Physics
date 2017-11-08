@@ -27,5 +27,4 @@ abstract public class Agent : ScriptableObject
     // Update is called once per frame
     abstract public Vector3 Update_Agent(float deltaTime);
     abstract public bool Add_Force(float mag, Vector3 dir);
-    
 }
