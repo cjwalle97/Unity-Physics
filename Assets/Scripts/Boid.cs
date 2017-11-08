@@ -11,6 +11,6 @@ public class Boid : Agent
 
     public override Vector3 Update_Agent(float deltaTime)
     {
-        
+        return new Vector3(0, 0, 0);
     }
 }
