@@ -5,6 +5,7 @@ using UnityEngine;
 public class BoidBehavior : AgentBehavior
 {
     public Boid boid;
+
     public void SetBoid(Agent b)
     {
         agent = b;
