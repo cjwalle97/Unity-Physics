@@ -14,15 +14,16 @@ public class BoidBehavior : AgentBehavior
 
     private void Start()
     {
-        
+
     }
 
     public void Update()
     {
-        
+
     }
     public void LateUpdate()
     {
         //transform.position = agent.Update_Agent();
     }
+    
 }

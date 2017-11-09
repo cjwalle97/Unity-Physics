@@ -36,7 +36,7 @@ public class AgentFactory : MonoBehaviour
         {
             var go = new GameObject();
             go.transform.SetParent(transform);
-            go.name = string.Format("{0} {1}, Agent: ", i);
+            go.name = string.Format("{0} {1}", "Agent: ", i);
 
             var behavior = go.AddComponent<BoidBehavior>();
 
