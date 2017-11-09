@@ -23,6 +23,6 @@ public class BoidBehavior : AgentBehavior
     }
     public void LateUpdate()
     {
-        
+        //transform.position = agent.Update_Agent();
     }
 }

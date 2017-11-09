@@ -5,14 +5,18 @@ using UnityEngine;
 public class AgentFactory : MonoBehaviour
 {
     public int Count;
-    public List<Agent> agents;
+    public static List<Agent> agents;
     public List<AgentBehavior> agentBehaviors;
 
-    
+    void Awake()
+    {
+        Create();
+    }
+
     // Use this for initialization
     void Start()
     {
-        Create();
+        
     }
     
     // Update is called once per frame
@@ -40,7 +44,6 @@ public class AgentFactory : MonoBehaviour
 
             agents.Add(boid);
             agentBehaviors.Add(behavior);
-
             behavior.SetBoid(boid);
         }
     }
@@ -50,5 +53,4 @@ public class AgentFactory : MonoBehaviour
     {
 
     }
-    
 }
