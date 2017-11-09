@@ -12,9 +12,9 @@ public class AgentFactory : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        Create();
     }
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -26,6 +26,8 @@ public class AgentFactory : MonoBehaviour
     {
         agents = new List<Agent>();
         agentBehaviors = new List<AgentBehavior>();
+        agents.Capacity = Count;
+        agentBehaviors.Capacity = Count;
         for (int i = 0; i < Count; i++)
         {
             var go = new GameObject();
