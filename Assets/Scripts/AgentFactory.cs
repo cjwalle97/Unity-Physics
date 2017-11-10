@@ -6,7 +6,7 @@ public class AgentFactory : MonoBehaviour
 {
     public int Count;
     public static List<Agent> agents;
-    public List<AgentBehavior> agentBehaviors;
+    public List<AgentBehaviour> agentBehaviours;
 
     void Awake()
     {
@@ -29,22 +29,24 @@ public class AgentFactory : MonoBehaviour
     public void Create()
     {
         agents = new List<Agent>();
-        agentBehaviors = new List<AgentBehavior>();
+        agentBehaviours = new List<AgentBehaviour>();
         agents.Capacity = Count;
-        agentBehaviors.Capacity = Count;
+        agentBehaviours.Capacity = Count;
         for (int i = 0; i < Count; i++)
         {
-            var go = new GameObject();
+            var go = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             go.transform.SetParent(transform);
             go.name = string.Format("{0} {1}", "Agent: ", i);
-
-            var behavior = go.AddComponent<BoidBehavior>();
+            
+            var behaviour = go.AddComponent<BoidBehaviour>();
+            behaviour.owner = go.transform;
 
             var boid = ScriptableObject.CreateInstance<Boid>();
+            
 
             agents.Add(boid);
-            agentBehaviors.Add(behavior);
-            behavior.SetBoid(boid);
+            agentBehaviours.Add(behaviour);
+            behaviour.SetBoid(boid);
         }
     }
 

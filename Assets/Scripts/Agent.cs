@@ -14,14 +14,13 @@ abstract public class Agent : ScriptableObject
     protected Vector3 Position;
     [SerializeField]
     protected float max_Speed;
-
-    public Transform _owner;
-    void Initialize(Transform owner)
+    
+    public void Initialize(Transform owner)
     {
         Mass = 1;
         Velocity = Vector3.right;
         Acceleration = Vector3.right;
-        Position = _owner.position;
+        Position = owner.position;
     }
 
     // Update is called once per frame

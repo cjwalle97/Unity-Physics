@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoxBehavior : MonoBehaviour
+public class BoxBehaviour : MonoBehaviour
 {
     public int BlockNum;
     public GameObject Block;
@@ -20,6 +20,7 @@ public class BoxBehavior : MonoBehaviour
     {
 		
 	}
+
     public void CreateBoxes(int num)
     {
         for (int i = 0; i < num; i++)

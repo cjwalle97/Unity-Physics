@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AgentBehavior : MonoBehaviour
+public class AgentBehaviour : MonoBehaviour
 {
     protected Agent agent;
 }
