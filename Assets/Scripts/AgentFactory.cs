@@ -50,9 +50,4 @@ public class AgentFactory : MonoBehaviour
         }
     }
 
-    [ContextMenu("Destroy")]
-    public void Destroy()
-    {
-
-    }
 }

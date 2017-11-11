@@ -30,10 +30,5 @@ public class BoidBehaviour : AgentBehaviour
     {
         //transform.position = agent.Update_Agent();
     }
-
-    //public Vector3 Seperation(Boid b)
-    //{
-    //    Vector3 force = new Vector3(0, 0, 0);
-    //    return force;
-    //}
+    
 }

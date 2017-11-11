@@ -205,6 +205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boidList: []
+  neighbors: []
 --- !u!4 &1311098322
 Transform:
   m_ObjectHideFlags: 0
