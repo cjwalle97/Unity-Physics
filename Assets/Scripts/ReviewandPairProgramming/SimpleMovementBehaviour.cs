@@ -38,7 +38,6 @@ public class SimpleMovementBehaviour : MonoBehaviour
         var dir = destination - transform.position;
         var spd = 3.0f;
         var mov = dir * spd;
-        transform.position += mov;
     }
 
     private void Start()
