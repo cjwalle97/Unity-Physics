@@ -17,6 +17,7 @@ abstract public class Agent : ScriptableObject
     
     public void Initialize(Transform owner)
     {
+        max_Speed = 10;
         Mass = 1;
         Velocity = Vector3.right;
         Acceleration = Vector3.right;

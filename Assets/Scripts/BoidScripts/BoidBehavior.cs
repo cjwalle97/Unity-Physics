@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.Linq;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,7 +29,7 @@ public class BoidBehaviour : AgentBehaviour
 
     public void LateUpdate()
     {
-        //transform.position = agent.Update_Agent();
+        transform.position = agent.Update_Agent(Time.deltaTime);
     }
     
 }
