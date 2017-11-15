@@ -36,8 +36,9 @@ public class SimpleMovementBehaviour : MonoBehaviour
     public void MoveTo(Vector3 destination)
     {
         var dir = destination - transform.position;
-        var spd = 3.0f;
+        var spd = 0.50f;
         var mov = dir * spd;
+        transform.position += mov;
     }
 
     private void Start()
