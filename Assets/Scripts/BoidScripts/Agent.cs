@@ -5,23 +5,23 @@ using UnityEngine;
 abstract public class Agent : ScriptableObject
 {
     [SerializeField]
-    protected float Mass;
+    protected float mass;
     [SerializeField]
-    protected Vector3 Velocity;
-    [SerializeField]
-    protected Vector3 Acceleration;
-    [SerializeField]
-    protected Vector3 Position;
+    protected Vector3 acceleration;
     [SerializeField]
     protected float max_Speed;
-    
+    [SerializeField]
+    public Vector3 velocity;
+    [SerializeField]
+    public Vector3 position;
+
     public void Initialize(Transform owner)
     {
         max_Speed = 10;
-        Mass = 1;
-        Velocity = Vector3.right;
-        Acceleration = Vector3.right;
-        Position = owner.position;
+        mass = 1;
+        velocity = Vector3.right;
+        acceleration = Vector3.right;
+        position = owner.position;
     }
 
     // Update is called once per frame

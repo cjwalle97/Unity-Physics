@@ -29,7 +29,7 @@ public class BoidBehaviour : AgentBehaviour
 
     public void LateUpdate()
     {
-        transform.position = agent.Update_Agent(Time.deltaTime);
+        //transform.position = agent.Update_Agent(Time.deltaTime);
     }
     
 }
