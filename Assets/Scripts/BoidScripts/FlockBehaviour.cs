@@ -23,15 +23,25 @@ public class FlockBehaviour : MonoBehaviour
 
     }
 
+    public Vector3 Cohesion(Boid bj)
+    {
+        float N = neighbors.Capacity;
+        Vector3 pcj = Vector3.zero;
+        foreach(Boid b in neighbors)
+        {
+
+        }
+    }
+
     public Vector3 Dispersion(Boid bj)
     {
-        Vector3 force = new Vector3(0, 0, 0);
+        Vector3 force = Vector3.zero;
         foreach (Boid bi in neighbors)
         {
-            if(bi != bj)
+            if (bi != bj)
             {
                 Vector3 distance = bi.position - bj.position;
-                if (distance.x <100 || distance.y < 100 || distance.z < 100)
+                if (distance.x < 100 || distance.y < 100 || distance.z < 100)
                 {
                     force = force - distance;
                 }
@@ -39,4 +49,9 @@ public class FlockBehaviour : MonoBehaviour
         }
         return force;
     }
+   
+    //public Vector3 Alignment(Boid bj)
+    //{
+
+    //}
 }
