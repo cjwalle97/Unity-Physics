@@ -14,6 +14,7 @@ public class FlockBehaviour : MonoBehaviour
         foreach (Agent a in AgentFactory.agents)
         {
             boidList.Add(a as Boid);
+            neighbors.Add(a as Boid);
         }
     }
 
@@ -27,10 +28,15 @@ public class FlockBehaviour : MonoBehaviour
     {
         float N = neighbors.Capacity;
         Vector3 pcj = Vector3.zero;
-        foreach(Boid b in neighbors)
+        foreach(Boid bi in neighbors)
         {
-
+            if(bi != bj)
+            {
+                pcj = pcj + bi.position;
+            }
         }
+        pcj = pcj / (N - 1);
+        return pcj;
     }
 
     public Vector3 Dispersion(Boid bj)
