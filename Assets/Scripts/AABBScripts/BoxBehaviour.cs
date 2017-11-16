@@ -2,35 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoxBehaviour : MonoBehaviour
+namespace AABB
 {
-    public int BlockNum;
-    public GameObject Block;
-
-    private List<GameObject> BlockList;
-
-	// Use this for initialization
-	void Start ()
+    public class BoxBehaviour : MonoBehaviour
     {
-        CreateBoxes(BlockNum);
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-		
-	}
+        public int BlockNum;
+        public GameObject Block;
 
-    public void CreateBoxes(int num)
-    {
-        for (int i = 0; i < num; i++)
+        private List<GameObject> BlockList;
+
+        // Use this for initialization
+        void Start()
         {
-            Instantiate(Block);
+            CreateBoxes(BlockNum);
         }
-    }
-    
-    public void AttachAABB()
-    {
 
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
+
+        public void CreateBoxes(int num)
+        {
+            for (int i = 0; i < num; i++)
+            {
+                Instantiate(Block);
+            }
+        }
+
+        public void AttachAABB()
+        {
+
+        }
     }
 }

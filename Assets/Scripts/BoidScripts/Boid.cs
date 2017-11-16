@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace BoidScripts
 {
-    public class Boid : Agent
+    public class Boid : Agent, IMoveable
     {
         public override bool Add_Force(float mag, Vector3 dir)
         {
