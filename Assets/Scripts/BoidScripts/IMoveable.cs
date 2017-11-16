@@ -4,8 +4,9 @@ using UnityEngine;
 
 namespace BoidScripts
 {
-    public class AgentBehaviour : MonoBehaviour
+    public interface IMoveable
     {
-        protected Agent agent;
+        Vector3 Update_Agent(float dt);
+        bool Add_Force(float mag, Vector3 dir);
     }
 }
