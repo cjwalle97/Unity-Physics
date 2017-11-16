@@ -6,19 +6,19 @@ namespace BoidScripts
 {
     public class Boid : Agent, IMoveable
     {
-        //Name:
-        //Type:
-        //Protection:
-        //Description:
+        //Name: Add_Force
+        //Type: bool
+        //Protection: public
+        /*Description:*/
         public bool Add_Force(float mag, Vector3 dir)
         {
             return true;
         }
 
-        //Name:
-        //Type:
-        //Protection:
-        //Description:
+        //Name: Update_Agent
+        //Type: Vector3
+        //Protection: public 
+        /*Description:*/
         public Vector3 Update_Agent(float dt)
         {
             acceleration = force / mass;

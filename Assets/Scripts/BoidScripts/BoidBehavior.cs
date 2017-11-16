@@ -10,10 +10,10 @@ namespace BoidScripts
         public Boid boid;
         public Transform owner;
 
-        //Name:
-        //Type:
-        //Protection:
-        //Description:
+        //Name: SetBoid
+        //Type: void
+        //Protection: public
+        /*Description:*/
         public void SetBoid(Agent b)
         {
             Vector3 RandomSpawn = new Vector3(Random.Range(1, 10), Random.Range(1, 10), Random.Range(1, 10));

@@ -19,10 +19,10 @@ namespace BoidScripts
         [SerializeField]
         public Vector3 position;
 
-        //Name:
-        //Type:
-        //Protection:
-        //Description:
+        //Name: Initialize
+        //Type: void
+        //Protection: public
+        /*Description:*/
         public void Initialize(Transform owner)
         {
             max_Speed = 10;
@@ -33,4 +33,4 @@ namespace BoidScripts
         }
 
     }
-}{
+}

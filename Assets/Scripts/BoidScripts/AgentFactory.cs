@@ -28,10 +28,10 @@ namespace BoidScripts
 
         }
 
-        //Name:
-        //Type:
-        //Protection:
-        //Description:
+        //Name: Create
+        //Type: void
+        //Protection: public 
+        /*Description:*/
         [ContextMenu("Create")]
         public void Create()
         {
@@ -56,10 +56,10 @@ namespace BoidScripts
             }
         }
 
-        //Name:
-        //Type:
-        //Protection:
-        //Description:
+        //Name: GetBoids
+        //Type: List<Boids>
+        //Protection: public 
+        /*Description:*/
         public static List<Boid> GetBoids()
         {
             List<Boid> result = new List<Boid>();

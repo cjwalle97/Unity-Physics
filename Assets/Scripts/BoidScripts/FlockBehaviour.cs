@@ -36,9 +36,8 @@ namespace BoidScripts
         //Name: Cohesion
         //Type: Vector3
         //Protection: private
-        //Description: a function that takes in the argument Boid bj and returns the float pcj
-        //after looping through the list neighbors and determining 
-        //the center of mass in the Boid List neighbors.
+        /*Description: a function of the type Vector3 that takes in the argument Boid bj 
+         * and returns the Vector3 pcj*/
         private Vector3 Cohesion(Boid bj)
         {
             /* variable of type float, n is assigned the value the function 
@@ -60,7 +59,8 @@ namespace BoidScripts
         //Name: Dispersion
         //Type: Vector3
         //Protection: private
-        //Description: a function that takes in the argument Boid
+        /*Description: a function of the type Vector3 that takes in the argument Boid bj
+         * and returns the Vector3 c*/
         private Vector3 Dispersion(Boid bj)
         {
             Vector3 c = Vector3.zero;
@@ -78,10 +78,11 @@ namespace BoidScripts
             return c;
         }
 
-        //Name:
-        //Type:
-        //Protection:
-        //Description:
+        //Name: Alignment
+        //Type: Vector3
+        //Protection: private
+        /*Description: a function of the type Vector3 that takes in the argument boid bj 
+         * and returns the Vector3 pvj*/
         private Vector3 Alignment(Boid bj)
         {
             float n = neighbors.Capacity;
