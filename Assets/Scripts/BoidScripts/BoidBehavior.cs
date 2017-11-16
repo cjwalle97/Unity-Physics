@@ -10,6 +10,10 @@ namespace BoidScripts
         public Boid boid;
         public Transform owner;
 
+        //Name:
+        //Type:
+        //Protection:
+        //Description:
         public void SetBoid(Agent b)
         {
             Vector3 RandomSpawn = new Vector3(Random.Range(1, 10), Random.Range(1, 10), Random.Range(1, 10));
@@ -33,6 +37,6 @@ namespace BoidScripts
         {
             //transform.position = agent.Update_Agent(Time.deltaTime);
         }
-
+        
     }
 }

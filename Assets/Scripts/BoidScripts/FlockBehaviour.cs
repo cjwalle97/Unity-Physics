@@ -16,10 +16,12 @@ namespace BoidScripts
         // Use this for initialization
         void Start()
         {
-            // Set boidList as the List of Agents in the AgentFactory
+            //for each Agent a in the list Agent in the static class AgentFactory 
             foreach (Agent a in AgentFactory.agents)
             {
+                //Add to the list of Boids boidList the Agent a as a Boid. 
                 boidList.Add(a as Boid);
+                //Add to the list of Boids, neighbors, the Agent a as a Boid.
                 neighbors.Add(a as Boid);
             }
         }
@@ -30,10 +32,20 @@ namespace BoidScripts
 
         }
 
+
+        //Name: Cohesion
+        //Type: Vector3
+        //Protection: private
+        //Description: a function that takes in the argument Boid bj and returns the float pcj
+        //after looping through the list neighbors and determining 
+        //the center of mass in the Boid List neighbors.
         private Vector3 Cohesion(Boid bj)
         {
+            /* variable of type float, n is assigned the value the function 
+             * Capacity called by the Boid List neighbors.*/
             float n = neighbors.Capacity;
             Vector3 pcj = Vector3.zero;
+            
             foreach (Boid bi in neighbors)
             {
                 if (bi != bj)
@@ -45,9 +57,13 @@ namespace BoidScripts
             return pcj;
         }
 
+        //Name: Dispersion
+        //Type: Vector3
+        //Protection: private
+        //Description: a function that takes in the argument Boid
         private Vector3 Dispersion(Boid bj)
         {
-            Vector3 force = Vector3.zero;
+            Vector3 c = Vector3.zero;
             foreach (Boid bi in neighbors)
             {
                 if (bi != bj)
@@ -55,13 +71,17 @@ namespace BoidScripts
                     Vector3 distance = bi.position - bj.position;
                     if (distance.x < 100 || distance.y < 100 || distance.z < 100)
                     {
-                        force = force - distance;
+                        c = c - distance;
                     }
                 }
             }
-            return force;
+            return c;
         }
 
+        //Name:
+        //Type:
+        //Protection:
+        //Description:
         private Vector3 Alignment(Boid bj)
         {
             float n = neighbors.Capacity;

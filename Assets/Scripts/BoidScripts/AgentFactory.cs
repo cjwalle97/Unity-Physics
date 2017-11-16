@@ -19,7 +19,7 @@ namespace BoidScripts
         // Use this for initialization
         void Start()
         {
-
+            GetBoids();
         }
 
         // Update is called once per frame
@@ -28,6 +28,10 @@ namespace BoidScripts
 
         }
 
+        //Name:
+        //Type:
+        //Protection:
+        //Description:
         [ContextMenu("Create")]
         public void Create()
         {
@@ -52,5 +56,18 @@ namespace BoidScripts
             }
         }
 
+        //Name:
+        //Type:
+        //Protection:
+        //Description:
+        public static List<Boid> GetBoids()
+        {
+            List<Boid> result = new List<Boid>();
+            foreach(Boid b in agents)
+            {
+                result.Add(b);
+            }
+            return result;
+        }
     }
 }
