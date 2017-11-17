@@ -31,7 +31,10 @@ namespace BoidScripts
         //Name: Create
         //Type: void
         //Protection: public 
-        /*Description:*/
+        /*Description: A function of the type void that takes in no argument.
+         It creates a loop that stops when the integer i is the same value as the Agent list agents Capacity
+         It then creates a GameObject and attatches a behaviour to said GameObject.
+         It then adds a Boid and a BoidBehaviour to the lists agents and agentBehaviours respectively.*/
         [ContextMenu("Create")]
         public void Create()
         {
@@ -59,7 +62,7 @@ namespace BoidScripts
         //Name: GetBoids
         //Type: List<Boids>
         //Protection: public 
-        /*Description:*/
+        /*Description: Loops through the Boids in agents and adds them to a list result which is then returned.*/
         public static List<Boid> GetBoids()
         {
             List<Boid> result = new List<Boid>();

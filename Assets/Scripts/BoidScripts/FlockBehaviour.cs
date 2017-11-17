@@ -23,13 +23,21 @@ namespace BoidScripts
                 boidList.Add(a as Boid);
                 //Add to the list of Boids, neighbors, the Agent a as a Boid.
                 neighbors.Add(a as Boid);
+                
             }
         }
 
         // Update is called once per frame
         void Update()
         {
-
+            foreach (Boid b in boidList)
+            {
+                Vector3 v1 = Cohesion(b);
+                Vector3 v2 = Dispersion(b);
+                Vector3 v3 = Alignment(b);
+                b.velocity = b.velocity + v1 + v2 + v3;
+                b.position = b.position + b.velocity;
+            }
         }
 
 
@@ -37,7 +45,7 @@ namespace BoidScripts
         //Type: Vector3
         //Protection: private
         /*Description: a function of the type Vector3 that takes in the argument Boid bj 
-         * and returns the Vector3 pcj*/
+         * and returns the Vector3 pcj()*/
         private Vector3 Cohesion(Boid bj)
         {
             /* variable of type float, n is assigned the value the function 
