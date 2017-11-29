@@ -9,15 +9,15 @@ public class HookesLaw : MonoBehaviour
     public class Particle
     {
         [SerializeField]
-        Vector3 position;
+        public Vector3 position;
         [SerializeField]
-        Vector3 velocity;
+        public Vector3 velocity;
         [SerializeField]
-        Vector3 acceleration;
+        public Vector3 acceleration;
         [SerializeField]
-        float mass;
+        public float mass;
         [SerializeField]
-        Vector3 force;
+        public Vector3 force;
 
         public Particle()
         {
@@ -41,11 +41,8 @@ public class HookesLaw : MonoBehaviour
             velocity += acceleration * Time.deltaTime;
             position += velocity * Time.deltaTime;
         }
-        public void AddForce(Vector3 f)
-        {
-
-        }
     }
+
     public class SpringDamper
     {
         Particle _p1, _p2;
@@ -61,7 +58,15 @@ public class HookesLaw : MonoBehaviour
             _ks = springConstant;
             _lo = restLength;
         }
-
+        public Vector3 FindDistance()
+        {
+            Vector3 Distance = _p1.position - _p2.position;
+            return Distance;
+        }
+        public void GetForce(Particle p1, Particle p2, Vector3 Distance)
+        {
+            
+        }
     }
 }
 //Find the unit distance from the 2 particles
