@@ -37,9 +37,9 @@ namespace ClothPhysics
             var newV2 = Vector3.Dot(newe, V2);
 
             //Changes the 1D float variable into a 3D Vector
-            var fs = (-_ks * (_lo - l)) - (_kd * (V1 - V2));
-            var f1 = fs * newe;
-            var f2 = -f1;
+            //var F = -_ks * (_lo - l) - _kd * (V1 - V2);
+            //var f1 = F * newe;
+            //var f2 = -f1;
         }
     }
 }
