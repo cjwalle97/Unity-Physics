@@ -12,7 +12,12 @@ namespace ClothPhysics
         public float _kd;
         public float _lo;
 
-        public SpringDamper() { }
+        public SpringDamper()
+        {
+            _ks = 1.0f;
+            _kd = 1.0f;
+            _lo = 5.0f;
+        }
 
         public SpringDamper(Particle p1, Particle p2, float ks, float kd, float lo)
         {

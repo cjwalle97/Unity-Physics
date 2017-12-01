@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,8 +19,7 @@ namespace ClothPhysics
 
         public void Update()
         {
-            velocity += acceleration * Time.deltaTime;
-            position += velocity * Time.deltaTime;
+            
         }
     }
 }
