@@ -19,7 +19,7 @@ namespace ClothPhysics
             _particles = new List<Particle>();
             _springdamperbehaviours = new List<SpringDamperBehaviour>();
             CreateParticles();
-            CreateSpringDampers();
+            
         }
 
         // Update is called once per frame
