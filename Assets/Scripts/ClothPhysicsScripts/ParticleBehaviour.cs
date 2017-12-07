@@ -12,13 +12,14 @@ namespace ClothPhysics
         // Use this for initialization
         void Start()
         {
-
+            _particle.velocity = Vector3.zero;
+            _particle.position = Vector3.zero;
         }
 
         // Update is called once per frame
         void Update()
         {
-            
+            ApplyForce();
         }
 
         void ApplyForce()

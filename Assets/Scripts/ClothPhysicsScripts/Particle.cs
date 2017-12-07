@@ -16,10 +16,6 @@ namespace ClothPhysics
         public float mass;
         [SerializeField]
         public Vector3 force;
-
-        public void Update()
-        {
-            
-        }
+        
     }
 }
