@@ -19,6 +19,7 @@ namespace ClothPhysics
             _particles = new List<Particle>();
             _springdamperbehaviours = new List<SpringDamperBehaviour>();
             CreateParticles();
+            AlignParticles();
             
         }
 
@@ -40,9 +41,23 @@ namespace ClothPhysics
             }
         }
 
-        void CreateSpringDampers(GameObject go, Particle par1, Particle p2)
+        void CreateSpringDampers(GameObject go, Particle par1, Particle par2)
         {
             SpringDamperBehaviour spb = go.AddComponent<SpringDamperBehaviour>();
+            spb._particle1 = par1;
+            spb._particle2 = par2;
+        }
+        
+        void AlignParticles()
+        {
+            for (int k = 0; k < _height; k++)
+            {
+                for (int i = 0; i < _width; i++)
+                {
+                    Vector3 newposition = new Vector3(i * 10, k * 10, 0.0f);
+                    _particles[ i + (k * _width)].position = newposition;
+                }
+            }
         }
     }
 }
