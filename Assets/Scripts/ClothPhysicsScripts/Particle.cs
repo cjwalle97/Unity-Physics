@@ -6,16 +6,19 @@ namespace ClothPhysics
 {
     public class Particle
     {
-        [SerializeField]
         public Vector3 position;
-        [SerializeField]
         public Vector3 velocity;
         [SerializeField]
-        public Vector3 acceleration;
+        Vector3 acceleration;
         [SerializeField]
-        public float mass;
-        [SerializeField]
+        float mass;
         public Vector3 force;
-        
+
+        public void ApplyForce()
+        {
+            acceleration = force;
+            velocity += acceleration * Time.deltaTime;
+            position += velocity * Time.deltaTime;
+        }
     }
 }

@@ -23,8 +23,7 @@ namespace ClothPhysics
             _damper = new SpringDamper(_particle1, _particle2, 1.0f, 1.0f, 5.0f);
             _pb1 = _object1.AddComponent<ParticleBehaviour>();
             _pb1._particle = _damper._p1;
-
-            var go2 = new GameObject("Particle 2");
+            
             _pb2 = _object2.AddComponent<ParticleBehaviour>();
             _pb2._particle = _damper._p2;
         }
@@ -32,16 +31,19 @@ namespace ClothPhysics
         // Update is called once per frame
         void Update()
         {
-
+            _object1.transform.position = _particle1.position;
+            _object2.transform.position = _particle2.position;
         }
 
         void CreateObjects()
         {
-            var go1 = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            go1.name = "Particle 1";
+            _object1 = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            _object1.name = "Particle 1";
 
-            var go2 = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            go2.name = "Particle 2";
+
+            _object2 = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            _object2.name = "Particle 2";
+            
         }
 
         void CreateParticles()
