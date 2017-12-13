@@ -80,7 +80,7 @@ namespace ClothPhysics
         }
         void ObjectPositioning()
         {
-            for(int i = 0; i < _particles.Capacity -1; i++)
+            for(int i = 0; i < _particles.Capacity; i++)
             {
                 _objects[i].transform.position = _particles[i].position;
             }
