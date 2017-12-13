@@ -32,8 +32,8 @@ namespace ClothPhysics
         // Update is called once per frame
         void Update()
         {
-            _object1.transform.position = _particle1.position;
-            _object2.transform.position = _particle2.position;
+        //    _object1.transform.position = _particle1.position;
+        //    _object2.transform.position = _particle2.position;
             _damper.CalculateForce();
         }
 

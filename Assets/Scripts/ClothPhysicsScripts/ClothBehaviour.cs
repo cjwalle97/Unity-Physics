@@ -19,19 +19,26 @@ namespace ClothPhysics
             _particles = new List<Particle>();
             _springdamperbehaviours = new List<SpringDamperBehaviour>();
             CreateParticles();
+            for (int i = 0; i < _height - 1; i++)
+            {
+                CreateRow(i);
+            }
+            for (int r = 0; r < _width - 1; r++)
+            {
+                CreateColumn(r);
+            }
             AlignParticles();
-            
         }
 
         // Update is called once per frame
         void Update()
         {
-
+            ObjectPositioning();
         }
 
         void CreateParticles()
         {
-            for (int i = 0; i < (_width * _height) * 2; i++)
+            for (int i = 0; i < (_width * _height); i++)
             {
                 var go = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 var par = new Particle();
@@ -41,13 +48,25 @@ namespace ClothPhysics
             }
         }
 
-        void CreateSpringDampers(GameObject go, Particle par1, Particle par2)
+        void CreateRow(int row)
         {
-            SpringDamperBehaviour spb = go.AddComponent<SpringDamperBehaviour>();
-            spb._particle1 = par1;
-            spb._particle2 = par2;
+            var go = new GameObject();
+            go.name = string.Format("{0} {1}", "SpringDamper", row);
+            var dmp = go.AddComponent<SpringDamperBehaviour>();
+            for (int i = 0; i < _width; i++)
+            {
+                dmp._particle1 =  _particles[i + (5 * row)];
+                dmp._object1 = _objects[i + (5 * row)];
+                dmp._particle2 = _particles[i + 2 + (5 * row)];
+                dmp._object2 = _objects[i + 2 + (5 * row)];
+            }
         }
-        
+
+        void CreateColumn(int column)
+        {
+
+        }
+
         void AlignParticles()
         {
             for (int k = 0; k < _height; k++)
@@ -55,8 +74,15 @@ namespace ClothPhysics
                 for (int i = 0; i < _width; i++)
                 {
                     Vector3 newposition = new Vector3(i * 10, k * 10, 0.0f);
-                    _particles[ i + (k * _width)].position = newposition;
+                    _particles[i + (k * _width)].position = newposition;
                 }
+            }
+        }
+        void ObjectPositioning()
+        {
+            for(int i = 0; i < _particles.Capacity -1; i++)
+            {
+                _objects[i].transform.position = _particles[i].position;
             }
         }
     }
