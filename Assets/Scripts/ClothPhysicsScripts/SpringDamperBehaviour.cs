@@ -21,7 +21,7 @@ namespace ClothPhysics
         {
             //CreateObjects();
             //CreateParticles();
-            _damper = new SpringDamper(_particle1, _particle2, 0.5f, 1.0f, 5.0f);
+            _damper = new SpringDamper(_particle1, _particle2, 0.5f, 1.0f);
             _pb1 = _object1.AddComponent<ParticleBehaviour>();
             _pb1._particle = _damper._p1;
             

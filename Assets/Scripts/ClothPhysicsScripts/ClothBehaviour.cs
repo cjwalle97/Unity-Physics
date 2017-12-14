@@ -9,8 +9,8 @@ namespace ClothPhysics
         private List<GameObject> _objects;
         private List<Particle> _particles;
         private List<SpringDamperBehaviour> _springdamperbehaviours;
-        private int _width = 5;
-        private int _height = 5;
+        public int _width;
+        public int _height;
 
         // Use this for initialization
         void Start()
@@ -19,11 +19,11 @@ namespace ClothPhysics
             _particles = new List<Particle>();
             _springdamperbehaviours = new List<SpringDamperBehaviour>();
             CreateParticles();
-            for (int i = 0; i < _height - 1; i++)
+            for (int i = 0; i < _height; i++)
             {
                 CreateRow(i);
             }
-            for (int r = 0; r < _width - 1; r++)
+            for (int r = 0; r < _width; r++)
             {
                 CreateColumn(r);
             }
@@ -50,15 +50,23 @@ namespace ClothPhysics
 
         void CreateRow(int row)
         {
-            var go = new GameObject();
-            go.name = string.Format("{0} {1}", "SpringDamper", row);
-            var dmp = go.AddComponent<SpringDamperBehaviour>();
-            for (int i = 0; i < _width; i++)
+            for(int k = 0; k < _width - 1; k++)
             {
-                dmp._particle1 =  _particles[i + (5 * row)];
-                dmp._object1 = _objects[i + (5 * row)];
-                dmp._particle2 = _particles[i + 2 + (5 * row)];
-                dmp._object2 = _objects[i + 2 + (5 * row)];
+                var go1 = new GameObject();
+                var dmp1 = go1.AddComponent<SpringDamperBehaviour>();
+                dmp1._particle1 = _particles[k + (5 * row)];
+                dmp1._object1 = _objects[k + (5 * row)];
+                dmp1._particle2 = _particles[k + 1 + (5 * row)];
+                dmp1._object2 = _objects[k + 1 + (5 * row)];
+            }
+            for (int i = 0; i < _width - 2; i++)
+            {
+                var go2 = new GameObject();
+                var dmp2 = go2.AddComponent<SpringDamperBehaviour>();
+                dmp2._particle1 = _particles[i + (5 * row)];
+                dmp2._object1 = _objects[i + (5 * row)];
+                dmp2._particle2 = _particles[i + 2 + (5 * row)];
+                dmp2._object2 = _objects[i + 2 + (5 * row)];
             }
         }
 
@@ -80,7 +88,7 @@ namespace ClothPhysics
         }
         void ObjectPositioning()
         {
-            for(int i = 0; i < _particles.Capacity; i++)
+            for (int i = 0; i < _height * _width; i++)
             {
                 _objects[i].transform.position = _particles[i].position;
             }
