@@ -9,12 +9,17 @@ namespace ClothPhysics
         private List<GameObject> _objects;
         private List<Particle> _particles;
         private List<SpringDamperBehaviour> _springdamperbehaviours;
+        private List<AerodynamicForce> _triangles;
+        private AerodynamicForce test;
+
         public int _width;
         public int _height;
 
         // Use this for initialization
         void Start()
         {
+            _width = 5;
+            _height = 5;
             _objects = new List<GameObject>();
             _particles = new List<Particle>();
             _springdamperbehaviours = new List<SpringDamperBehaviour>();
@@ -28,12 +33,14 @@ namespace ClothPhysics
                 CreateColumn(r);
             }
             AlignParticles();
+            test = new AerodynamicForce(_particles[0], _particles[1], _particles[5]);
         }
 
         // Update is called once per frame
         void Update()
         {
             ObjectPositioning();
+            test.CalculateForce();
         }
 
         void CreateParticles()
@@ -92,6 +99,68 @@ namespace ClothPhysics
             {
                 _objects[i].transform.position = _particles[i].position;
             }
+        }
+        void CreateTriangles()
+        {
+            
+        }
+        // 20 -21 -22 -23 -24
+        //  | \ | \ | \ | \ |
+        // 15 -16 -17 -18 -19
+        //  | \ | \ | \ | \ |
+        // 10 -11 -12 -13 -14
+        //  | \ | \ | \ | \ |
+        //  5 - 6 - 7 - 8 - 9
+        //  | \ | \ | \ |  \ |
+        //  0 - 1 - 2 - 3 - 4
+    }
+
+    public class AerodynamicForce
+    {
+        private Vector3 _p = Vector3.one; //density of air
+
+        private float _Cd; //drag for the object
+        private float _a; //cross sectional area
+        private Vector3 _n; // normal of the triangle
+        private Vector3 _e; //vector in the opposite direction of the velocity
+        private Particle _r1; //Particle 1
+        private Particle _r2; //Particle 2
+        private Particle _r3; //Particle 3
+        private Vector3 _v1; //Velocity of Particle 1
+        private Vector3 _v2; //Velocity of Particle 2
+        private Vector3 _v3; //Velocity of Particle 3
+        private Vector3 _Vsurface; // = (v1 + v2 + v3) / 3
+        private Vector3 _Vair; // = -density
+        private Vector3 _v;
+
+        public Vector3 Force;
+
+        public AerodynamicForce(Particle p1, Particle p2, Particle p3)
+        {
+            _r1 = p1;
+            _v1 = _r1.velocity;
+            _r2 = p2;
+            _v2 = _r2.velocity;
+            _r3 = p3;
+            _v3 = _r3.velocity;
+            _Vsurface = (_v1 + _v2 + _v3) / 3;
+            _Vair = _p;
+            _v = _Vsurface - _Vair;
+        }
+
+        public void CalculateForce()
+        {
+            //n= ((r2 - r1) x (r3 - r1))/|(r2 - r1) x (r3 -r1))|
+            _n = Vector3.Cross((_r2.position - _r1.position), (_r3.position - _r1.position)) / Vector3.Magnitude(Vector3.Cross((_r2.position - _r1.position), (_r3.position - _r1.position)));
+            //ao = 1/2 |(r2 - r1) x (r3 -r1)|
+            var ao = 1 / 2 * Vector3.Magnitude(Vector3.Cross((_r2.position - _r1.position), (_r3.position - _r1.position)));
+            _a = ao * (Vector3.Dot(_v, _n) / Vector3.Magnitude(_v));
+            var n = Vector3.Cross((_r2.position - _r1.position), (_r3.position - _r1.position));
+            var force = (Vector3.Magnitude(_v) * Vector3.Dot(_v, n) / (2 * Vector3.Magnitude(n))) * n;
+            Force = force / 3;
+            _r1.force += Force;
+            _r2.force += Force;
+            _r3.force += Force;
         }
     }
 }

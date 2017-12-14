@@ -48,8 +48,8 @@ namespace ClothPhysics
             var f1 = F * newe;
             var f2 = -f1;
 
-            _p1.force = f1;
-            _p2.force = f2;
+            _p1.force += f1;
+            _p2.force += f2;
         }
     }
 }

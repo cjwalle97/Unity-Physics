@@ -12,7 +12,7 @@ namespace ClothPhysics
         Vector3 acceleration;
         [SerializeField]
         float mass;
-        public Vector3 force;
+        public Vector3 force = Vector3.zero;
 
         public void ApplyForce()
         {

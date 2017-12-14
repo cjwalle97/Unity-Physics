@@ -15,7 +15,6 @@ namespace ClothPhysics
         private ParticleBehaviour _pb1;
         private ParticleBehaviour _pb2;
 
-
         // Use this for initialization
         void Start()
         {
@@ -57,4 +56,5 @@ namespace ClothPhysics
 
         }
     }
+    
 }
