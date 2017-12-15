@@ -34,6 +34,7 @@ namespace ClothPhysics
             }
             AlignParticles();
             test = new AerodynamicForce(_particles[0], _particles[1], _particles[5]);
+            //CreateTriangles();
         }
 
         // Update is called once per frame
@@ -41,6 +42,10 @@ namespace ClothPhysics
         {
             ObjectPositioning();
             test.CalculateForce();
+            /*for(int i = 0; i<32; i++)
+            {
+                _triangles[i].CalculateForce();
+            }*/
         }
 
         void CreateParticles()
@@ -57,7 +62,7 @@ namespace ClothPhysics
 
         void CreateRow(int row)
         {
-            for(int k = 0; k < _width - 1; k++)
+            for (int k = 0; k < _width - 1; k++)
             {
                 var go1 = new GameObject();
                 var dmp1 = go1.AddComponent<SpringDamperBehaviour>();
@@ -102,17 +107,82 @@ namespace ClothPhysics
         }
         void CreateTriangles()
         {
-            
+            // 20 -21 -22 -23 -24
+            //  | \ | \ | \ | \ |
+            // 15 -16 -17 -18 -19
+            //  | \ | \ | \ | \ |
+            // 10 -11 -12 -13 -14
+            //  | \ | \ | \ | \ |
+            //  5 - 6 - 7 - 8 - 9
+            //  | \ | \ | \ | \ |
+            //  0 - 1 - 2 - 3 - 4
+            var t1 = new AerodynamicForce(_particles[0], _particles[1], _particles[5]);
+            var t2 = new AerodynamicForce(_particles[1], _particles[6], _particles[5]);
+            var t3 = new AerodynamicForce(_particles[1], _particles[2], _particles[6]);
+            var t4 = new AerodynamicForce(_particles[1], _particles[7], _particles[6]);
+            var t5 = new AerodynamicForce(_particles[2], _particles[3], _particles[7]);
+            var t6 = new AerodynamicForce(_particles[3], _particles[8], _particles[7]);
+            var t7 = new AerodynamicForce(_particles[3], _particles[4], _particles[8]);
+            var t8 = new AerodynamicForce(_particles[4], _particles[9], _particles[8]);
+            var t9 = new AerodynamicForce(_particles[5], _particles[6], _particles[10]);
+            var t10 = new AerodynamicForce(_particles[6], _particles[11], _particles[10]);
+            var t11 = new AerodynamicForce(_particles[6], _particles[7], _particles[11]);
+            var t12 = new AerodynamicForce(_particles[7], _particles[12], _particles[11]);
+            var t13 = new AerodynamicForce(_particles[7], _particles[8], _particles[12]);
+            var t14 = new AerodynamicForce(_particles[8], _particles[13], _particles[12]);
+            var t15 = new AerodynamicForce(_particles[8], _particles[9], _particles[13]);
+            var t16 = new AerodynamicForce(_particles[9], _particles[14], _particles[13]);
+            var t17 = new AerodynamicForce(_particles[10], _particles[11], _particles[15]);
+            var t18 = new AerodynamicForce(_particles[11], _particles[16], _particles[15]);
+            var t19 = new AerodynamicForce(_particles[11], _particles[12], _particles[16]);
+            var t20 = new AerodynamicForce(_particles[12], _particles[17], _particles[16]);
+            var t21 = new AerodynamicForce(_particles[12], _particles[13], _particles[17]);
+            var t22 = new AerodynamicForce(_particles[13], _particles[18], _particles[17]);
+            var t23 = new AerodynamicForce(_particles[13], _particles[14], _particles[18]);
+            var t24 = new AerodynamicForce(_particles[14], _particles[19], _particles[18]);
+            var t25 = new AerodynamicForce(_particles[15], _particles[16], _particles[20]);
+            var t26 = new AerodynamicForce(_particles[16], _particles[21], _particles[20]);
+            var t27 = new AerodynamicForce(_particles[16], _particles[17], _particles[21]);
+            var t28 = new AerodynamicForce(_particles[17], _particles[22], _particles[21]);
+            var t29 = new AerodynamicForce(_particles[17], _particles[18], _particles[22]);
+            var t30 = new AerodynamicForce(_particles[18], _particles[23], _particles[22]);
+            var t31 = new AerodynamicForce(_particles[18], _particles[19], _particles[23]);
+            var t32 = new AerodynamicForce(_particles[19], _particles[24], _particles[23]);
+
+            _triangles.Add(t1);
+            _triangles.Add(t2);
+            _triangles.Add(t3);
+            _triangles.Add(t4);
+            _triangles.Add(t5);
+            _triangles.Add(t6);
+            _triangles.Add(t7);
+            _triangles.Add(t8);
+            _triangles.Add(t9);
+            _triangles.Add(t10);
+            _triangles.Add(t11);
+            _triangles.Add(t12);
+            _triangles.Add(t13);
+            _triangles.Add(t14);
+            _triangles.Add(t15);
+            _triangles.Add(t16);
+            _triangles.Add(t17);
+            _triangles.Add(t18);
+            _triangles.Add(t19);
+            _triangles.Add(t20);
+            _triangles.Add(t21);
+            _triangles.Add(t22);
+            _triangles.Add(t23);
+            _triangles.Add(t24);
+            _triangles.Add(t25);
+            _triangles.Add(t26);
+            _triangles.Add(t27);
+            _triangles.Add(t28);
+            _triangles.Add(t29);
+            _triangles.Add(t30);
+            _triangles.Add(t31);
+            _triangles.Add(t32);
         }
-        // 20 -21 -22 -23 -24
-        //  | \ | \ | \ | \ |
-        // 15 -16 -17 -18 -19
-        //  | \ | \ | \ | \ |
-        // 10 -11 -12 -13 -14
-        //  | \ | \ | \ | \ |
-        //  5 - 6 - 7 - 8 - 9
-        //  | \ | \ | \ |  \ |
-        //  0 - 1 - 2 - 3 - 4
+        
     }
 
     public class AerodynamicForce
