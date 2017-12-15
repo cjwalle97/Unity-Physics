@@ -23,6 +23,7 @@ namespace ClothPhysics
             _objects = new List<GameObject>();
             _particles = new List<Particle>();
             _springdamperbehaviours = new List<SpringDamperBehaviour>();
+            _triangles = new List<AerodynamicForce>();
             CreateParticles();
             for (int i = 0; i < _height; i++)
             {
@@ -33,19 +34,19 @@ namespace ClothPhysics
                 CreateColumn(r);
             }
             AlignParticles();
-            test = new AerodynamicForce(_particles[0], _particles[1], _particles[5]);
-            //CreateTriangles();
+            //test = new AerodynamicForce(_particles[0], _particles[1], _particles[5]);
+            CreateTriangles();
         }
 
         // Update is called once per frame
         void Update()
         {
             ObjectPositioning();
-            test.CalculateForce();
-            /*for(int i = 0; i<32; i++)
+            //test.CalculateForce();
+            for (int i = 0; i < 32; i++)
             {
                 _triangles[i].CalculateForce();
-            }*/
+            }
         }
 
         void CreateParticles()
