@@ -40,7 +40,6 @@ namespace ClothPhysics
             
             _object2 = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             _object2.name = "Particle 2";
-            
         }
 
         void CreateParticles()

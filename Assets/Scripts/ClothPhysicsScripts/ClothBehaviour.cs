@@ -8,6 +8,7 @@ namespace ClothPhysics
     {
         private List<GameObject> _objects;
         private List<Particle> _particles;
+        private List<ParticleBehaviour> _particlebehaviours;
         private List<SpringDamperBehaviour> _springdamperbehaviours;
         private List<AerodynamicForce> _triangles;
         private AerodynamicForce test;
@@ -23,19 +24,30 @@ namespace ClothPhysics
             _objects = new List<GameObject>();
             _particles = new List<Particle>();
             _springdamperbehaviours = new List<SpringDamperBehaviour>();
+            _particlebehaviours = new List<ParticleBehaviour>();
             _triangles = new List<AerodynamicForce>();
             CreateParticles();
             for (int i = 0; i < _height; i++)
             {
                 CreateRow(i);
             }
-            for (int r = 0; r < _width; r++)
-            {
-                CreateColumn(r);
-            }
+            //for (int r = 0; r < _width; r++)
+            //{
+            //    CreateColumn(r);
+            //}
             AlignParticles();
             //test = new AerodynamicForce(_particles[0], _particles[1], _particles[5]);
             CreateTriangles();
+            _particles[0].locked = true;
+            _particles[4].locked = true;
+            _particles[5].locked = true;
+            _particles[9].locked = true;
+            _particles[10].locked = true;
+            _particles[14].locked = true;
+            _particles[15].locked = true;
+            _particles[19].locked = true;
+            _particles[20].locked = true;
+            _particles[24].locked = true;
         }
 
         // Update is called once per frame
@@ -56,6 +68,9 @@ namespace ClothPhysics
                 var go = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 var par = new Particle();
                 go.name = string.Format("{0} {1}", "Particle: ", i);
+                var pbh = go.AddComponent<ParticleBehaviour>();
+                pbh._particle = par;
+                _particlebehaviours.Add(pbh);
                 _objects.Add(go);
                 _particles.Add(par);
             }
@@ -81,11 +96,6 @@ namespace ClothPhysics
                 dmp2._particle2 = _particles[i + 2 + (5 * row)];
                 dmp2._object2 = _objects[i + 2 + (5 * row)];
             }
-        }
-
-        void CreateColumn(int column)
-        {
-
         }
 
         void AlignParticles()
@@ -183,7 +193,7 @@ namespace ClothPhysics
             _triangles.Add(t31);
             _triangles.Add(t32);
         }
-        
+
     }
 
     public class AerodynamicForce
@@ -229,9 +239,18 @@ namespace ClothPhysics
             var n = Vector3.Cross((_r2.position - _r1.position), (_r3.position - _r1.position));
             var force = (Vector3.Magnitude(_v) * Vector3.Dot(_v, n) / (2 * Vector3.Magnitude(n))) * n;
             Force = force / 3;
-            _r1.force += Force;
-            _r2.force += Force;
-            _r3.force += Force;
+            if (!_r1.locked)
+            {
+                _r1.force += Force;
+            }
+            if(!_r2.locked)
+            {
+                _r2.force += Force;
+            }
+            if(!_r3.locked)
+            {
+                _r3.force += Force;
+            }
         }
     }
 }
