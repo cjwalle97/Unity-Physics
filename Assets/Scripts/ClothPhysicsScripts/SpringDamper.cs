@@ -32,7 +32,7 @@ namespace ClothPhysics
         {
             _p1.force = Vector3.zero;
             _p2.force = Vector3.zero;
-            //Computes the spring force by using the position variables of both _p1 and _p2 
+            //Computes the spring force by using the position variables of both _p1 and _p2
             var e = _p2.position - _p1.position;
             var l = Vector3.Magnitude(e);
             var newe = e / l;
@@ -50,14 +50,9 @@ namespace ClothPhysics
             var f1 = F * newe;
             var f2 = -f1;
 
-            if (!_p1.locked)
-            {
-                _p1.force = f1;
-            }
-            if (!_p2.locked)
-            {
-                _p2.force = f2;
-            }
+            _p1.force = f1;
+            _p2.force = f2;
+
         }
     }
 }

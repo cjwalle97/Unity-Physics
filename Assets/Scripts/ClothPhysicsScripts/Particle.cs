@@ -15,9 +15,12 @@ namespace ClothPhysics
 
         public void ApplyForce()
         {
-            acceleration = force;
-            velocity += acceleration * Time.deltaTime;
-            position += velocity * Time.deltaTime;
+            if(!locked)
+            {
+                acceleration = force;
+                velocity += acceleration * Time.deltaTime;
+                position += velocity * Time.deltaTime;
+            }
         }
     }
 }

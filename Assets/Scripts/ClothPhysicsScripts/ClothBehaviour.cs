@@ -239,18 +239,10 @@ namespace ClothPhysics
             var n = Vector3.Cross((_r2.position - _r1.position), (_r3.position - _r1.position));
             var force = (Vector3.Magnitude(_v) * Vector3.Dot(_v, n) / (2 * Vector3.Magnitude(n))) * n;
             Force = force / 3;
-            if (!_r1.locked)
-            {
-                _r1.force += Force;
-            }
-            if(!_r2.locked)
-            {
-                _r2.force += Force;
-            }
-            if(!_r3.locked)
-            {
-                _r3.force += Force;
-            }
+
+            _r1.force = Force;
+            _r2.force = Force;
+            _r3.force = Force;
         }
     }
 }
