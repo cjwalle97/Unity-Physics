@@ -12,8 +12,6 @@ namespace ClothPhysics
         public GameObject _object2;
 
         private SpringDamper _damper;
-        private ParticleBehaviour _pb1;
-        private ParticleBehaviour _pb2;
 
         // Use this for initialization
         void Start()
@@ -21,8 +19,6 @@ namespace ClothPhysics
             //CreateObjects();
             //CreateParticles();
             _damper = new SpringDamper(_particle1, _particle2, 0.5f, 1.0f);
-            _pb1._particle = _damper._p1;
-            _pb2._particle = _damper._p2;
         }
 
         // Update is called once per frame

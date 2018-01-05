@@ -52,11 +52,11 @@ namespace ClothPhysics
 
             if (!_p1.locked)
             {
-                _p1.force += f1;
+                _p1.force = f1;
             }
             if (!_p2.locked)
             {
-                _p2.force += f2;
+                _p2.force = f2;
             }
         }
     }
