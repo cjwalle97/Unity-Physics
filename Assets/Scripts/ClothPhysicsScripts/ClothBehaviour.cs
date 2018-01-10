@@ -57,8 +57,13 @@ namespace ClothPhysics
             //test.CalculateForce();
             for (int i = 0; i < 32; i++)
             {
-                _triangles[i].CalculateForce();
+                _triangles[i].CalculateWind();
             }
+        }
+
+        public void ApplyGravity()
+        {
+
         }
 
         void CreateParticles()
@@ -229,7 +234,7 @@ namespace ClothPhysics
             _v = _Vsurface - _Vair;
         }
 
-        public void CalculateForce()
+        public void CalculateWind()
         {
             //n= ((r2 - r1) x (r3 - r1))/|(r2 - r1) x (r3 -r1))|
             _n = Vector3.Cross((_r2.position - _r1.position), (_r3.position - _r1.position)) / Vector3.Magnitude(Vector3.Cross((_r2.position - _r1.position), (_r3.position - _r1.position)));
@@ -240,9 +245,9 @@ namespace ClothPhysics
             var force = (Vector3.Magnitude(_v) * Vector3.Dot(_v, n) / (2 * Vector3.Magnitude(n))) * n;
             Force = force / 3;
 
-            _r1.force = Force;
-            _r2.force = Force;
-            _r3.force = Force;
+            _r1.wind = Force;
+            _r2.wind = Force;
+            _r3.wind = Force;
         }
     }
 }

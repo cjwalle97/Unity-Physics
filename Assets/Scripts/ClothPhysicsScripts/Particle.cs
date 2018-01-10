@@ -11,13 +11,15 @@ namespace ClothPhysics
         public Vector3 acceleration;
         public float mass;
         public Vector3 force = Vector3.zero;
+        public Vector3 wind = Vector3.zero;
+        public Vector3 gravity = Vector3.zero;
         public bool locked;
 
         public void ApplyForce()
         {
             if(!locked)
             {
-                acceleration = force;
+                acceleration = force + wind + gravity;
                 velocity += acceleration * Time.deltaTime;
                 position += velocity * Time.deltaTime;
             }
