@@ -30,8 +30,6 @@ namespace ClothPhysics
 
         public void CalculateForce()
         {
-            _p1.force = Vector3.zero;
-            _p2.force = Vector3.zero;
             //Computes the spring force by using the position variables of both _p1 and _p2
             var e = _p2.position - _p1.position;
             var l = Vector3.Magnitude(e);
