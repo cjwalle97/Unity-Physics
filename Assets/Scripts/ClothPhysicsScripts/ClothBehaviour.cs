@@ -48,22 +48,16 @@ namespace ClothPhysics
             _particles[19].locked = true;
             _particles[20].locked = true;
             _particles[24].locked = true;
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-            ObjectPositioning();
-            //test.CalculateForce();
             for (int i = 0; i < 32; i++)
             {
                 _triangles[i].CalculateWind();
             }
         }
 
-        public void ApplyGravity()
+        // Update is called once per frame
+        void Update()
         {
-
+            ObjectPositioning();
         }
 
         void CreateParticles()
@@ -121,6 +115,7 @@ namespace ClothPhysics
                 _objects[i].transform.position = _particles[i].position;
             }
         }
+
         void CreateTriangles()
         {
             // 20 -21 -22 -23 -24
@@ -239,7 +234,7 @@ namespace ClothPhysics
             //n= ((r2 - r1) x (r3 - r1))/|(r2 - r1) x (r3 -r1))|
             _n = Vector3.Cross((_r2.position - _r1.position), (_r3.position - _r1.position)) / Vector3.Magnitude(Vector3.Cross((_r2.position - _r1.position), (_r3.position - _r1.position)));
             //ao = 1/2 |(r2 - r1) x (r3 -r1)|
-            var ao = 1 / 2 * Vector3.Magnitude(Vector3.Cross((_r2.position - _r1.position), (_r3.position - _r1.position)));
+            var ao = (1 / 2) * Vector3.Magnitude(Vector3.Cross((_r2.position - _r1.position), (_r3.position - _r1.position)));
             _a = ao * (Vector3.Dot(_v, _n) / Vector3.Magnitude(_v));
             var n = Vector3.Cross((_r2.position - _r1.position), (_r3.position - _r1.position));
             var force = (Vector3.Magnitude(_v) * Vector3.Dot(_v, n) / (2 * Vector3.Magnitude(n))) * n;
