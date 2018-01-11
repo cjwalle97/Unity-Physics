@@ -232,10 +232,10 @@ namespace ClothPhysics
         public void CalculateWind()
         {
             //n= ((r2 - r1) x (r3 - r1))/|(r2 - r1) x (r3 -r1))|
-            _n = Vector3.Cross((_r2.position - _r1.position), (_r3.position - _r1.position)) / Vector3.Magnitude(Vector3.Cross((_r2.position - _r1.position), (_r3.position - _r1.position)));
+            _n = (Vector3.Cross((_r2.position - _r1.position), (_r3.position - _r1.position))) / (Vector3.Magnitude(Vector3.Cross((_r2.position - _r1.position), (_r3.position - _r1.position))));
             //ao = 1/2 |(r2 - r1) x (r3 -r1)|
             var ao = (1 / 2) * Vector3.Magnitude(Vector3.Cross((_r2.position - _r1.position), (_r3.position - _r1.position)));
-            _a = ao * (Vector3.Dot(_v, _n) / Vector3.Magnitude(_v));
+            _a = (Vector3.Dot(_v, _n) / Vector3.Magnitude(_v));
             var n = Vector3.Cross((_r2.position - _r1.position), (_r3.position - _r1.position));
             var force = (Vector3.Magnitude(_v) * Vector3.Dot(_v, n) / (2 * Vector3.Magnitude(n))) * n;
             Force = force / 3;

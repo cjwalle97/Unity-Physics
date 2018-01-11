@@ -14,7 +14,7 @@ namespace ClothPhysics
 
         public SpringDamper()
         {
-            _ks = 1.0f;
+            _ks = 5.0f;
             _kd = 1.0f;
             _lo = 5.0f;
         }
