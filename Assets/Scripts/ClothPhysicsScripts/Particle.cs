@@ -22,7 +22,7 @@ namespace ClothPhysics
             {
                 mass = 1;
                 _gravity = mass * new Vector3(0, -9.81f, 0);
-                acceleration = (force + wind + _gravity) * mass;
+                acceleration = force + wind + _gravity);
                 velocity += acceleration * Time.deltaTime;
                 position += velocity * Time.deltaTime;
             }
