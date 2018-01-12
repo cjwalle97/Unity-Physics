@@ -71,6 +71,7 @@ namespace ClothPhysics
             for (int k = 0; k < _width - 1; k++)
             {
                 var go1 = new GameObject();
+                go1.name = "Spring Damper 1";
                 var dmp1 = go1.AddComponent<SpringDamperBehaviour>();
                 dmp1._particle1 = _particles[k + (5 * row)];
                 dmp1._object1 = _objects[k + (5 * row)];
@@ -80,11 +81,34 @@ namespace ClothPhysics
             for (int i = 0; i < _width - 2; i++)
             {
                 var go2 = new GameObject();
+                go2.name = "Spring Damper 2";
                 var dmp2 = go2.AddComponent<SpringDamperBehaviour>();
                 dmp2._particle1 = _particles[i + (5 * row)];
                 dmp2._object1 = _objects[i + (5 * row)];
                 dmp2._particle2 = _particles[i + 2 + (5 * row)];
                 dmp2._object2 = _objects[i + 2 + (5 * row)];
+            }
+        }
+
+        void CreateColumn(int column)
+        {
+            for(int i = 0; i < _height - 1; i++)
+            {
+                var go3 = new GameObject();
+                go3.name = "Spring Damper 3";
+                var dmp3 = go3.AddComponent<SpringDamperBehaviour>();
+                dmp3._particle1 = _particles[column + i * 5];
+                dmp3._particle2 = _particles[column + (i * 5) + 5];
+            }
+            for (int k = 0; k < _height; k++)
+            {
+                var go4 = new GameObject();
+                go4.name = "Spring Damper 4";
+                var dmp4 = go4.AddComponent<SpringDamperBehaviour>();
+                dmp4._particle1 = _particles[column + k * 5];
+                dmp4._object1 = _objects[column + k * 5];
+                dmp4._particle2 = _particles[column + (k * 5) + 10];
+                dmp4._object2 = _objects[column + (k * 5) + 10];
             }
         }
 
