@@ -92,7 +92,7 @@ namespace ClothPhysics
 
         void CreateColumn(int column)
         {
-            for(int i = 0; i < _height - 1; i++)
+            for (int i = 0; i < _height - 1; i++)
             {
                 var go3 = new GameObject();
                 go3.name = "Spring Damper 3";
@@ -100,6 +100,7 @@ namespace ClothPhysics
                 dmp3._particle1 = _particles[column + i * 5];
                 dmp3._particle2 = _particles[column + (i * 5) + 5];
             }
+
             for (int k = 0; k < _height; k++)
             {
                 var go4 = new GameObject();

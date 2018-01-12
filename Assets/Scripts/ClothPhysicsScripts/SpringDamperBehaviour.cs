@@ -16,16 +16,16 @@ namespace ClothPhysics
         // Use this for initialization
         void Start()
         {
-            //CreateObjects();
-            //CreateParticles();
-            _damper = new SpringDamper(_particle1, _particle2, 0.5f, 1.0f);
+            CreateObjects();
+            CreateParticles();
+            _damper = new SpringDamper(_particle1, _particle2, 0.5f, 1.0f, 5.0f);
         }
 
         // Update is called once per frame
         void Update()
         {
-        //    _object1.transform.position = _particle1.position;
-        //    _object2.transform.position = _particle2.position;
+            _object1.transform.position = _particle1.position;
+            _object2.transform.position = _particle2.position;
             _damper.CalculateForce();
         }
 
@@ -42,9 +42,9 @@ namespace ClothPhysics
         {
             _particle1 = new Particle();
             _particle1.position = Vector3.zero;
-
+            
             _particle2 = new Particle();
-            _particle2.position = new Vector3(10, 0, 0);
+            _particle2.position = new Vector3(15, 0, 0);
 
         }
     }

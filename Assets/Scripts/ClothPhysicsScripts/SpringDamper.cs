@@ -19,13 +19,13 @@ namespace ClothPhysics
             _lo = 5.0f;
         }
 
-        public SpringDamper(Particle p1, Particle p2, float ks, float kd)
+        public SpringDamper(Particle p1, Particle p2, float ks, float kd, float lo)
         {
             _p1 = p1;
             _p2 = p2;
             _ks = ks;
             _kd = kd;
-            _lo = Vector3.Distance(_p1.position, _p2.position);
+            _lo = lo;
         }
 
         public void CalculateForce()
