@@ -28,12 +28,25 @@ namespace ClothPhysics
             _lo = lo;
         }
 
+        public void ApplyGravity(int m)
+        {
+            _p1.mass = m;
+            _p2.mass = m;
+            _p1._gravity = m * new Vector3(0, -9.81f, 0);
+            _p2._gravity = m * new Vector3(0, -9.81f, 0);
+        }
+
+        public void ApplyWind(Vector3 w)
+        {
+            _p1.wind = w;
+        }
+
         public void CalculateForce()
         {
             //Computes the spring force by using the position variables of both _p1 and _p2
             var e = _p2.position - _p1.position;
-            var l = Vector3.Magnitude(e);
-            var newe = e / l;
+            var l = Vector3.Magnitude(Vector3.Normalize(e));
+            var newe = Vector3.Normalize(e) / l;
 
             //computes the spring force as 1D float variable.
             var V1 = _p1.velocity;

@@ -26,8 +26,10 @@ namespace ClothPhysics
         {
             _object1.transform.position = _particle1.position;
             _object2.transform.position = _particle2.position;
+            _damper.ApplyGravity(1);
+            _damper.ApplyWind(new Vector3(1, 0, 0));
             _damper.CalculateForce();
-        }
+    }
 
         void CreateObjects()
         {
@@ -42,10 +44,11 @@ namespace ClothPhysics
         {
             _particle1 = new Particle();
             _particle1.position = Vector3.zero;
+            _particle1.locked = false;
             
             _particle2 = new Particle();
             _particle2.position = new Vector3(15, 0, 0);
-
+            _particle2.locked = false;
         }
     }
     
