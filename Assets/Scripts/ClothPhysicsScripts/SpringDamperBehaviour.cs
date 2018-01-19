@@ -16,9 +16,11 @@ namespace ClothPhysics
         // Use this for initialization
         void Start()
         {
-            CreateObjects();
+
             CreateParticles();
-            _damper = new SpringDamper(_particle1, _particle2, 0.5f, 1.0f, 5.0f);
+            CreateObjects();
+            _damper = new SpringDamper(_particle1, _particle2, 1.0f, 1.0f, 5.0f);
+            
         }
 
         // Update is called once per frame
@@ -26,8 +28,8 @@ namespace ClothPhysics
         {
             _object1.transform.position = _particle1.position;
             _object2.transform.position = _particle2.position;
-            _damper.ApplyGravity(1);
-            _damper.ApplyWind(new Vector3(1, 0, 0));
+            _damper.ApplyGravity(0);
+            _damper.ApplyWind(new Vector3(0, 0, 1));
             _damper.CalculateForce();
     }
 
@@ -35,9 +37,13 @@ namespace ClothPhysics
         {
             _object1 = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             _object1.name = "Particle 1";
-            
+            var pb1 = _object1.AddComponent<ParticleBehaviour>();
+            pb1._particle = _particle1;
+
             _object2 = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             _object2.name = "Particle 2";
+            var pb2 = _object2.AddComponent<ParticleBehaviour>();
+            pb2._particle = _particle2;
         }
 
         void CreateParticles()
