@@ -17,8 +17,8 @@ namespace ClothPhysics
         void Start()
         {
 
-            CreateParticles();
-            CreateObjects();
+            //CreateParticles();
+            //CreateObjects();
             _damper = new SpringDamper(_particle1, _particle2, 1.0f, 1.0f, 5.0f);
             
         }
@@ -28,7 +28,7 @@ namespace ClothPhysics
         {
             _object1.transform.position = _particle1.position;
             _object2.transform.position = _particle2.position;
-            _damper.ApplyGravity(0);
+            _damper.ApplyGravity(1);
             _damper.ApplyWind(new Vector3(0, 0, 1));
             _damper.CalculateForce();
     }
