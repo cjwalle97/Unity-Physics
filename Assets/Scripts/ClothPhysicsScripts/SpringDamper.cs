@@ -28,7 +28,7 @@ namespace ClothPhysics
             _lo = lo;
         }
 
-        public void ApplyGravity(int m)
+        public void ApplyGravity(float m)
         {
             _p1.mass = m;
             _p2.mass = m;

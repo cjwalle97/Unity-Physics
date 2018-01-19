@@ -28,7 +28,7 @@ namespace ClothPhysics
         {
             _object1.transform.position = _particle1.position;
             _object2.transform.position = _particle2.position;
-            _damper.ApplyGravity(1);
+            _damper.ApplyGravity(0.5f);
             _damper.ApplyWind(new Vector3(0, 0, 1));
             _damper.CalculateForce();
     }
