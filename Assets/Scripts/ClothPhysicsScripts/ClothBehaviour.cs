@@ -31,10 +31,10 @@ namespace ClothPhysics
             {
                 CreateRow(i);
             }
-            //for (int r = 0; r < _width; r++)
-            //{
-            //    CreateColumn(r);
-            //}
+            for (int r = 0; r < _width; r++)
+            {
+                CreateColumn(r);
+            }
             AlignParticles();
             LockParticles();
             //test = new AerodynamicForce(_particles[0], _particles[1], _particles[5]);
@@ -97,11 +97,13 @@ namespace ClothPhysics
                 var go3 = new GameObject();
                 go3.name = "Spring Damper 3";
                 var dmp3 = go3.AddComponent<SpringDamperBehaviour>();
-                dmp3._particle1 = _particles[column + i * 5];
+                dmp3._particle1 = _particles[column + (i * 5)];
+                dmp3._object1 = _objects[column + i * 5];
                 dmp3._particle2 = _particles[column + (i * 5) + 5];
+                dmp3._object2 = _objects[column + (i * 5) + 5];
             }
 
-            for (int k = 0; k < _height; k++)
+            for (int k = 0; k < _height - 2; k++)
             {
                 var go4 = new GameObject();
                 go4.name = "Spring Damper 4";

@@ -19,7 +19,7 @@ namespace ClothPhysics
 
             //CreateParticles();
             //CreateObjects();
-            _damper = new SpringDamper(_particle1, _particle2, 1.0f, 1.0f, 5.0f);
+            _damper = new SpringDamper(_particle1, _particle2, 3.0f, 3.0f, 15.0f);
             
         }
 
