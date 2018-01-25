@@ -13,7 +13,7 @@ namespace ClothPhysics
         }
 
         // Update is called once per frame
-        void Update()
+        void FixedUpdate()
         {
             _particle.ApplyForce();
         }

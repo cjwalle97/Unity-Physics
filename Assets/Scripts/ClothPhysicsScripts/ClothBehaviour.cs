@@ -27,6 +27,8 @@ namespace ClothPhysics
             _particlebehaviours = new List<ParticleBehaviour>();
             _triangles = new List<Triangles>();
             CreateParticles();
+            AlignParticles();
+            LockParticles();
             for (int i = 0; i < _height; i++)
             {
                 CreateRow(i);
@@ -35,20 +37,19 @@ namespace ClothPhysics
             {
                 CreateColumn(r);
             }
-            AlignParticles();
-            LockParticles();
             //test = new AerodynamicForce(_particles[0], _particles[1], _particles[5]);
             CreateTriangles();
-            for (int i = 0; i < 32; i++)
-            {
-                _triangles[i].AeroDynamicForces();
-            }
+            
         }
 
         // Update is called once per frame
         void Update()
         {
             ObjectPositioning();
+            for (int i = 0; i < 32; i++)
+            {
+                _triangles[i].AeroDynamicForces();
+            }
         }
 
         void CreateParticles()

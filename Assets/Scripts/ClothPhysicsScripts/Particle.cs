@@ -14,13 +14,14 @@ namespace ClothPhysics
         public Vector3 force;
         public Vector3 wind;
         public bool locked;
-        
+
         public void ApplyForce()
         {
-            if(!locked)
+
+            acceleration = (force + wind + _gravity);
+            velocity += acceleration * Time.deltaTime;
+            if (!locked)
             {
-                acceleration = (force + wind + _gravity);
-                velocity += acceleration * Time.deltaTime;
                 position += velocity * Time.deltaTime;
             }
         }

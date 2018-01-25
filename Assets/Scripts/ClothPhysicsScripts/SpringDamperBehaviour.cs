@@ -20,7 +20,7 @@ namespace ClothPhysics
             //CreateParticles();
             //CreateObjects();
             _damper = new SpringDamper(_particle1, _particle2, 3.0f, 3.0f, 15.0f);
-            
+            _damper.ApplyGravity(1.0f);
         }
 
         // Update is called once per frame
@@ -28,10 +28,12 @@ namespace ClothPhysics
         {
             _object1.transform.position = _particle1.position;
             _object2.transform.position = _particle2.position;
-            _damper.ApplyGravity(0.5f);
-            _damper.ApplyWind(new Vector3(0, 0, 1));
+        }
+
+        void FixedUpdate()
+        {
             _damper.CalculateForce();
-    }
+        }
 
         void CreateObjects()
         {
@@ -51,11 +53,11 @@ namespace ClothPhysics
             _particle1 = new Particle();
             _particle1.position = Vector3.zero;
             _particle1.locked = false;
-            
+
             _particle2 = new Particle();
             _particle2.position = new Vector3(15, 0, 0);
             _particle2.locked = false;
         }
     }
-    
+
 }

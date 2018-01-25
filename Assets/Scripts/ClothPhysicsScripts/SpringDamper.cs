@@ -61,7 +61,6 @@ namespace ClothPhysics
 
             _p1.force = f1;
             _p2.force = f2;
-
         }
     }
 }
